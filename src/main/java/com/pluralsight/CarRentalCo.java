@@ -14,14 +14,22 @@ public class CarRentalCo {
         System.out.println("To get started, we just need a couple of details from you.\n");
 
         //details
+        System.out.println("For how many days would you like rent? ");
+        int days = keyboard.nextInt();
+
         surcharge(keyboard);
-
-
-
-
-        //final factors
-
+        optionalCost(keyboard);
         double basicCost = 29.99;
+        double totalCost = days * (basicCost + optionalCost() + surcharge());
+
+        //display system
+        //Receipt
+        System.out.println("Awesome! \nNow that we have all the details we need, \nbelow is the cost breakdown.");
+
+        System.out.println("Vehicle rental $" + basicCost);
+        System.out.println("Selected preferences: $" + optionalCost());
+        System.out.println("Underage driver surcharge: $" + surcharge());
+        System.out.println("Total: $" + totalCost);
 
     }
 
@@ -61,7 +69,7 @@ public class CarRentalCo {
          */
 
         //total optional cost
-        double optionalCost = tollTagCost + gpsCost + roadsideAssistanceCost;
+        double optionalCosts = tollTagCost + gpsCost + roadsideAssistanceCost;
 
     }
 
