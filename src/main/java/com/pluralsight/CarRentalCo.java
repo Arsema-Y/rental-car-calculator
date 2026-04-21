@@ -20,7 +20,7 @@ public class CarRentalCo {
 
         //details
         //get total days
-        System.out.println("For how many days would you like to rent a vehicle? ");
+        System.out.print("For how many days would you like to rent a vehicle? ");
         int totalDays = keyboard.nextInt();
 
         //get additional charges
@@ -28,7 +28,7 @@ public class CarRentalCo {
         double optionalCost = provideOptionalCost(keyboard);
 
         //total fee
-        double totalCost = (totalDays * (basicCost + optionalCost))+ surcharge;
+        double totalCost = totalDays * (basicCost + optionalCost + surcharge);
 
         //display system
         //Receipt
@@ -36,7 +36,7 @@ public class CarRentalCo {
                            "Now that we have all the details we need,\n" +
                            "below is the cost breakdown.\n");
 
-        System.out.printf("Vehicle rental $%.2f", (basicCost * totalDays));
+        System.out.printf("Vehicle rental: $%.2f", (basicCost * totalDays));
         System.out.printf("\nAdditional services: $%.2f", optionalCost);
         System.out.printf("\nUnderage driver surcharge: $%.2f", surcharge);
         System.out.printf("\nTotal: $%.2f", totalCost);
@@ -51,31 +51,31 @@ public class CarRentalCo {
              optional.nextLine(); //clear buffer
         //toll tag
         System.out.print("Electric Toll Tag: ");
-        String tollTag = optional.nextLine();
+        String tollTag = optional.nextLine().toLowerCase();
 
         //toll tag cost
         double tollTagCost = 0;
-        if(tollTag.equalsIgnoreCase("Y")){
+        if(tollTag.equals("Y")){
             tollTagCost = 3.95;
         }
 
         //GPS
         System.out.print("GPS: ");
-        String gps = optional.nextLine();
+        String gps = optional.nextLine().toLowerCase();
 
         //GPS cost
         double gpsCost = 0;
-        if(gps.equalsIgnoreCase("Y")){
+        if(gps.equals("Y")){
             gpsCost = 2.95;
         }
 
         //Roadside Assist
         System.out.print("Roadside Assistance: ");
-        String roadsideAssistance = optional.nextLine();
+        String roadsideAssistance = optional.nextLine().toUpperCase();
 
         //roadside assist cost
         double roadsideAssistanceCost = 0;
-        if(roadsideAssistance.equalsIgnoreCase("Y")){
+        if(roadsideAssistance.equals("Y")){
             roadsideAssistanceCost = 3.95;
         }
 
@@ -97,7 +97,7 @@ public class CarRentalCo {
     public static double determineSurcharge(Scanner getAge) {
 
         //1: instructions
-        System.out.println("What's your age?");
+        System.out.print("What's your age? ");
         //2: input environment
         int age = getAge.nextInt();
 
@@ -105,7 +105,7 @@ public class CarRentalCo {
        double surcharge = 0;
         if(age > 21 && age < 25){
             System.out.println("I see you're under 25. " +
-                               "\nYou will get extra protection!");
+                               "\nYou will get underage protection fee.");
             surcharge = 29.99 * 0.3;
         }else if(age >= 25){
             System.out.println("I see you're over 25. " +
